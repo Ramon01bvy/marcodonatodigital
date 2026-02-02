@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Marco Donato Digital Luxe | Online Groei</title>
+  <meta name="description" content="Meer klanten via websites, SEO, Google Ads & AI-marketing — resultaatgericht voor MKB & ZZP."/>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --dark: #0f0f1a;
+      --darker: #080812;
+      --accent: #ffd33d;
+      --accent-dark: #e6b800;
+      --text: #e0e0ff;
+      --text-light: #a0a0cc;
+    }
+
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      background: var(--dark);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    header {
+      position: fixed;
+      top: 0; width: 100%; z-index: 1000;
+      background: rgba(15,15,26,0.92);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(255,211,61,0.08);
+    }
+
+    nav {
+      max-width: 1400px; margin: 0 auto;
+      padding: 1rem 5%;
+      display: flex; justify-content: space-between; align-items: center;
+    }
+
+    .logo {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.5rem, 5vw, 1.9rem);
+      font-weight: 700; color: white;
+    }
+
+    .nav-links {
+      display: flex; align-items: center; gap: 2rem;
+    }
+
+    .nav-links a {
+      color: var(--text-light); text-decoration: none;
+      font-weight: 500; font-size: 1rem; transition: color 0.3s;
+    }
+
+    .nav-links a:hover, .nav-links a.active { color: var(--accent); }
+
+    .hamburger { display: none; font-size: 1.8rem; background: none; border: none; color: var(--accent); cursor: pointer; }
+
+    .hero {
+      min-height: 100vh; display: flex; align-items: center; justify-content: center;
+      padding: 6rem 5% 4rem; text-align: center;
+      background: linear-gradient(rgba(15,15,26,0.82), rgba(15,15,26,0.9)),
+                  url('https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=1600&auto=format&fit=crop&q=80') center/cover no-repeat fixed;
+    }
+
+    .hero-content { max-width: 900px; }
+    .hero h1 { font-size: clamp(2.6rem, 7vw, 5rem); font-weight: 700; line-height: 1.1; margin-bottom: 1.5rem; }
+    .hero h1 span { color: var(--accent); }
+    .hero p { font-size: clamp(1.1rem, 3vw, 1.35rem); color: var(--text-light); margin: 0 auto 2.5rem; max-width: 620px; }
+
+    .btn-primary {
+      display: inline-block; background: var(--accent); color: #111;
+      padding: 1rem 2.2rem; border-radius: 50px; text-decoration: none;
+      font-weight: 600; font-size: clamp(1rem, 2.5vw, 1.15rem);
+      transition: all 0.3s; box-shadow: 0 6px 20px rgba(255,211,61,0.3);
+      min-width: 260px; text-align: center; touch-action: manipulation;
+      border: none; cursor: pointer;
+    }
+
+    .btn-primary:hover, .btn-primary:focus {
+      transform: translateY(-3px); box-shadow: 0 12px 30px rgba(255,211,61,0.45);
+      background: var(--accent-dark);
+    }
+
+    section { padding: 7rem 5% 5rem; }
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.2rem, 5vw, 3.2rem); text-align: center; margin-bottom: 3rem;
+    }
+
+    .grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.8rem; max-width: 1300px; margin: 0 auto;
+    }
+
+    .card {
+      background: rgba(255,255,255,0.04); border: 1px solid rgba(255,211,61,0.1);
+      border-radius: 16px; padding: 2rem 1.8rem; transition: all 0.35s ease;
+      backdrop-filter: blur(6px);
+    }
+
+    .card:hover { transform: translateY(-10px); border-color: var(--accent); box-shadow: 0 20px 40px rgba(0,0,0,0.35); }
+
+    .card h3 { font-size: 1.4rem; margin-bottom: 1rem; color: white; }
+
+    /* Calendly section */
+    #contact {
+      background: var(--darker);
+      text-align: center;
+    }
+
+    .calendly-container {
+      max-width: 1100px;  /* Pas aan als je smaller wilt */
+      margin: 0 auto;
+      min-height: 700px;  /* Voorkomt layout shift tijdens laden */
+    }
+
+    .calendly-fallback {
+      margin: 2rem 0;
+      font-size: 1.1rem;
+      color: var(--text-light);
+    }
+
+    footer {
+      background: var(--darker); padding: 5rem 5% 3rem;
+      border-top: 1px solid rgba(255,211,61,0.08);
+      text-align: center; font-size: 0.95rem; color: var(--text-light);
+    }
+
+    .footer-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 3rem; max-width: 1200px; margin: 0 auto 3rem; text-align: left;
+    }
+
+    @media (max-width: 900px) {
+      .nav-links { display: none; flex-direction: column; position: absolute; top: 100%; left: 0; right: 0;
+        background: var(--dark); padding: 2rem 5%; border-bottom: 1px solid rgba(255,211,61,0.1); }
+      .nav-links.active { display: flex; }
+      .hamburger { display: block; }
+      .hero { padding: 8rem 5% 6rem; background-attachment: scroll; }
+      section { padding: 5rem 6% 4rem; }
+      .btn-primary { width: 100%; max-width: 340px; }
+      .calendly-container { min-height: 900px; } /* Meer ruimte op mobiel */
+    }
+
+    @media (max-width: 480px) {
+      .hero h1 { font-size: 2.8rem; }
+      .section-title { font-size: 2rem; }
+      .card { padding: 1.6rem 1.4rem; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <nav>
+    <div class="logo">Marco Donato</div>
+    <button class="hamburger" aria-label="Menu openen">☰</button>
+    <div class="nav-links" id="navMenu">
+      <a href="#home">Home</a>
+      <a href="#diensten">Diensten</a>
+      <a href="#over">Over</a>
+      <a href="#cases">Cases</a>
+      <a href="#pakketten">Pakketten</a>
+      <a href="#contact" class="btn-primary" style="color:#111; background:var(--accent);">Boek gesprek</a>
+    </div>
+  </nav>
+</header>
+
+<section class="hero" id="home">
+  <div class="hero-content">
+    <h1>Online Groei<span> zonder gedoe</span></h1>
+    <p>Meer klanten via websites, SEO, Google Ads<br>en slimme AI-marketing — resultaatgericht.</p>
+    <a href="#contact" class="btn-primary">GRATIS STRATEGIEGESPREK BOEKEN →</a>
+  </div>
+</section>
+
+<!-- Problemen sectie (blijft hetzelfde) -->
+<section id="problemen">
+  <h2 class="section-title">Herken je dit?</h2>
+  <div class="grid">
+    <div class="card">
+      <h3>Geen online zichtbaarheid</h3>
+      <p>Je website wordt niet gevonden en levert geen nieuwe klanten op.</p>
+    </div>
+    <div class="card">
+      <h3>Weinig websitebezoekers</h3>
+      <p>Je hebt een mooie site, maar er komt bijna niemand.</p>
+    </div>
+    <div class="card">
+      <h3>Onduidelijke strategie</h3>
+      <p>Je doet wat op social media zonder concreet plan.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Diensten sectie (blijft hetzelfde) -->
+<section id="diensten">
+  <h2 class="section-title">Diensten voor online groei</h2>
+  <div class="grid">
+    <div class="card">
+      <h3>Websites</h3>
+      <p>Professionele, snelle sites die bezoekers omzetten in klanten.</p>
+      <a href="#" class="btn-primary" style="margin-top:1.5rem;">Meer info →</a>
+    </div>
+    <div class="card">
+      <h3>SEO</h3>
+      <p>Beter gevonden worden in Google → structureel meer verkeer.</p>
+      <a href="#" class="btn-primary" style="margin-top:1.5rem;">Meer info →</a>
+    </div>
+    <div class="card">
+      <h3>SEA / Google Ads</h3>
+      <p>Direct resultaat met gerichte advertenties.</p>
+      <a href="#" class="btn-primary" style="margin-top:1.5rem;">Meer info →</a>
+    </div>
+    <div class="card">
+      <h3>AI-Marketing</h3>
+      <p>Slimme automatisering → meer leads met minder handmatig werk.</p>
+      <a href="#" class="btn-primary" style="margin-top:1.5rem;">Meer info →</a>
+    </div>
+  </div>
+</section>
+
+<!-- Calendly sectie -->
+<section id="contact">
+  <h2 class="section-title">Plan je gratis strategiegesprek</h2>
+  <p style="color:var(--text-light); max-width:680px; margin:0 auto 3rem; font-size:1.2rem;">
+    Ontdek in slechts 30 minuten hoe je meer klanten kunt krijgen via websites, SEO, Google Ads en AI.<br>
+    Boek direct een tijdslot dat jou uitkomt — helemaal vrijblijvend.
+  </p>
+
+  <div class="calendly-container">
+    <!-- === PLAK HIER JE CALENDLY INLINE EMBED CODE === -->
+    <!-- Voorbeeld placeholder (vervang dit volledig met jouw code van Calendly): -->
+    <!-- <div class="calendly-inline-widget" data-url="https://calendly.com/marcodonatobv/gratis-strategiegesprek-met-marco-ontdek-in-30-minuten" style="min-width:320px;height:700px;"></div> -->
+    <!-- <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script> -->
+
+    <!-- Als de embed niet laadt, fallback link -->
+    <p class="calendly-fallback">
+      Lukt het niet om een tijd te kiezen? Boek direct via:<br>
+      <a href="https://calendly.com/marcodonatobv/gratis-strategiegesprek-met-marco-ontdek-in-30-minuten" target="_blank" class="btn-primary" style="margin-top:1.5rem; display:inline-block;">
+        Open agenda in nieuw tabblad →
+      </a>
+    </p>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-grid">
+    <div>
+      <h4>MARCO DONATO DIGITAL LUXE</h4>
+      <p>Exclusieve digitale groei voor ambitieuze ondernemers.</p>
+    </div>
+    <div>
+      <h4>Navigatie</h4>
+      <p>Home<br>Diensten<br>Over Marco<br>Cases<br>Contact</p>
+    </div>
+    <div>
+      <h4>Contact</h4>
+      <p>Reinevaanstraat 17<br>5044 HD Tilburg<br>+31 6 53452452<br>info@marco-donatoluxe.nl</p>
+    </div>
+  </div>
+  <p style="margin-top:3rem; color:#555;">
+    © 2026 Marco Donato Digital Luxe • Alle rechten voorbehouden
+  </p>
+</footer>
+
+<script>
+  // Hamburger menu toggle
+  const hamburger = document.querySelector('.hamburger');
+  const navMenu = document.getElementById('navMenu');
+  hamburger.addEventListener('click', () => {
+    navMenu.classList.toggle('active');
+    hamburger.textContent = navMenu.classList.contains('active') ? '✕' : '☰';
+  });
+  document.querySelectorAll('.nav-links a').forEach(link => {
+    link.addEventListener('click', () => {
+      navMenu.classList.remove('active');
+      hamburger.textContent = '☰';
+    });
+  });
+</script>
+
+</body>
+</html>
